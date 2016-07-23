@@ -114,11 +114,9 @@ Here we ask: ``What is the recovered 21cm power spectrum level for a range 21cm 
 
 \begin{equation}
 P_{v} = P_{out} - P_v
+\label{eq:Pvest}
 \end{equation}
 This is plotted in Figure \ref{fig:eorvin}  
-
-
-
 
 
 
@@ -129,6 +127,14 @@ In the loss calculation by C. Cheng we are injecting the simulated EoR signal \e
 \includegraphics[width=0.5\textwidth]{C_loss_Nlst6_Neor6_fgscale0.001_afterfrf_PP.png}
 \caption{Injecting before (blue) and after (green) the fringe rate filter}\label{fig:afterfrf}
 \end{figure}
+
+
+\section*{Other things we notice}
+\begin{enumerate}
+\item Does estimator number two (Eq. \ref{eq:Pvest}) really have a circular definition?
+\item  $P_v$ has what appears to be a floor in its output. 
+\item Variance seems larger than one might expect.
+\end{enumerate}
 
 %Commented analysis that might be redundant now
 %Both matrices are nominally diagonal in the limit of infinite uncorrelated time samples. In this case the weighting has no effect and all signals are always recoverable.  In practice both matrices are computed from a small number of lst samples and are dominated by sample variance. The noise covariance matrix is set by the number of independent sampes ($n$) averaged by the fringe-rate filter. The diagonal terms go as the per-channel variance $\sigma_N \pm \sigma_N/n$ and the off-diagonal terms as $\sigma_N/n$. The covariance is purely driven by the size and shape of the convolving fringe-rate kernel.  The eor covariance matrix, however, is set by whatever covariance underlying covariance the EoR signal might have, modulated by the sample variance imposed by the telescope window function. In other words, the {\bf covariance of the eor signal can be \emph{increased} by applying additional fringe-rate smoothing or by some unknown process which imposes large-scale correlation, but it cannot be decreased.}   Here we make a study of the effect of these two different timescales: the underlying covariance of the EoR signal and the smoothing applied to the data. 
