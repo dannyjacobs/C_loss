@@ -77,17 +77,31 @@ where $i$ and $j$ index different groups and $W$ is a weight vector formed by su
 
 
 Using this method we calculate a number of power spectra for each trial,
-\begin{itemize}
-\item injected power spectrum \\
-$P_{in} = E E^\mathsf{T}$
-\item weighted power spectrum output with inject \\
-$P_{out} = X C_X^{-1} C_X^{-1} X^\mathsf{T}$ 
-\item weighted power spectrum output \emph{without} inject \\
-$P_{v} = N C_N^{-1} C_N^{-1} N^\mathsf{T}$
-\item power spectrum before weighting or injection (in this simulation this is just the noise pspec) \\
-$P_{noise} = N N^\mathsf{T}$
+
+The injected power spectrum 
+\begin{equation}
+P_{in} = E E^\mathsf{T}
+\end{equation}
+
+the input noise power spectrum  
+\begin{equation}
+P_{noise} = < N N^\mathsf{T} >
+\end{equation}
+where brackets indicate average over baselines and cross multiplication between groups as described above.
+
+
+The weighted power spectrum output with the injected signal 
+\begin{equation}
+P_{out} = < X C_X^{-1} C_X^{-1} X^\mathsf{T} >
+\end{equation}
+
+as well as the weighted power spectrum output \emph{without} the injected signal, ie the uncorrected power spectrum output from our pipeline.
+\begin{equation}
+P_{v} = < N C_N^{-1} C_N^{-1} N^\mathsf{T} >
+\end{equation}
+
 %\item "foreground" power spectrum (noise realization that is the same on every baseline) $P_{fg}$
-\end{itemize}
+
 
 The output for each inject value is a large number of trial output power spectrums, over which there is a wide range of losses (near 0 to 100\%).  
 
@@ -117,7 +131,7 @@ $P_{out}$ includes whatever is in the original data (noise, foregrounds, 21cm si
 Here we ask: ``What is the recovered 21cm power spectrum level for a range 21cm signal power levels''  We estimate the recovered 21cm signal $P_e$ by subtracting off the power spectrum of the data before the EoR is injected (ie the original empirical covariance power spectrum $P_{v}$)
 
 \begin{equation}
-P_{e} = P_{out} - P_v
+P_{e} \approx P_{out} - P_v
 \label{eq:Pvest}
 \end{equation}
 and then further ask what value of injected signal would cause the recovered eor signal $P_e$ to equal the weighted power spectrum
